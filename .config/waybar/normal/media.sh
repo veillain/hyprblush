@@ -23,10 +23,10 @@ metadata(){
 
         if [[ "$status" == Playing ]]; then
             class="normal"
-            sleep 0.5
+            sleep 1
         elif [[ "$status" == Paused ]]; then
             class="paused"
-            sleep 0.5
+            sleep 1
         else
             class="normal"
             title=$(echo $HOSTNAME)
