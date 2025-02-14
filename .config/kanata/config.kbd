@@ -1,0 +1,20 @@
+(defsrc
+    caps
+    esc
+ )
+
+(defvar
+    tekan 150
+    tahan 150
+)
+
+(defalias
+    ;; ---- Others Things ----
+    capslock (tap-hold $tekan $tahan esc lctl)
+    escapers (tap-hold $tekan $tahan esc grv)
+)
+
+(deflayer base
+    @capslock
+    @escapers
+)

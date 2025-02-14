@@ -1,0 +1,5 @@
+#!/bin/bash
+
+id=$(ps -ef | grep '[w]aybar' | grep normal)
+
+kill $id || waybar -c $HOME/.config/waybar/normal/config.jsonc -s $HOME/.config/waybar/normal/style.css

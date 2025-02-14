@@ -1,0 +1,14 @@
+#!/bin/bash
+
+INPUT=$1
+APPNAME="WhatsApp"
+
+if [ "$INPUT" ]; then
+    for file in $(ls $HOME/.local/share/applications); do
+        cat $HOME/.local/share/applications/$file | grep "$INPUT"
+        if [ $? -eq 0 ]; then
+            launch=$(cat $HOME/.local/share/applications/$file | grep Exec | sed 's/^Exec=//')
+            $launch
+        fi
+    done
+fi

@@ -1,0 +1,9 @@
+* {
+    font:           "Monaspace Neon Regular 10";
+    background:     #141b1eFF;
+    background-alt: #232a2dFF;
+    foreground:     #dadadaff;
+    selected:       #71BAF2ff;
+    active:         #71BAF2ff;
+    urgent:         #ef7e7eff;
+}
