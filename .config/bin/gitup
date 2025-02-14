@@ -5,15 +5,25 @@ if [ -n "$choice" ]; then
     git add $choice || exit
     echo ""
     echo "[Last Commit]"
-    echo "= $lastcommit"
+    echo "> $lastcommit"
+
     echo ""
     echo "[Commit Message]"
     read -p ": " commitmsg
-    git commit -m "$commitmsg"
+    if [ -n "$commitmsg" ]; then
+        git commit -m "$commitmsg"
+    else
+        git commit -m "$lastcommit"
+    fi
+
     echo ""
     echo "[Branch to Push]"
     read -p ": " branches
-    git push -u origin $branches
+    if [ -n "$branches" ]; then
+        git push -u origin $branches
+    else
+        git push -u origin main
+    fi
 else
     echo "Please include files you want to add, or type '.' for all"
 fi
