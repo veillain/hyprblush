@@ -43,7 +43,7 @@ alias neovim='nvim'
 alias bf='clear; bunnyfetch'
 alias boottime='systemd-analyze'
 alias grep='grep --color=auto'
-alias .bashrc='nvim $HOME/.config/.bashrc'
+alias .bashrc='nvim $HOME/.config/bashrc'
 alias init.lua='nvim $HOME/.config/nvim/init.lua'
 alias init.remap='nvim $HOME/.config/nvim/plugin/remap.lua'
 alias init.plugin='nvim $HOME/.config/nvim/plugin/init.lua'
@@ -51,18 +51,6 @@ alias init.plugin='nvim $HOME/.config/nvim/plugin/init.lua'
 alias mem='free --mega'
 alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
-gitup (){
-    choice=$1
-    lastcommit=$(git show --summary | awk 'NR==5' | sed 's/    //')
-    git add $choice
-    echo ""
-    echo "Last Commit: $lastcommit"
-    read -p "+Commit msg: " commitmsg
-    git commit -m \""$commitmsg"\"
-    echo ""
-    read -p "Branch to push: " branches
-    git push -u origin $branches
-}
 
 PS1='[\u@\h \W]\$ '
 bunnyfetch

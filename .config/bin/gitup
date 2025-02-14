@@ -1,0 +1,15 @@
+#!/bin/bash
+choice=$1
+if [ -n "$choice" ]; then
+    lastcommit=$(git show --summary | awk 'NR==5' | sed 's/    //')
+    git add $choice || echo -e "\nThis folder is not a github repo"; exit
+    echo ""
+    echo "Last Commit: $lastcommit"
+    read -p "+Commit msg: " commitmsg
+    git commit -m \""$commitmsg"\"
+    echo ""
+    read -p "Branch to push: " branches
+    git push -u origin $branches
+else
+    echo "Please include files you want to add, or type '.' for all"
+fi
