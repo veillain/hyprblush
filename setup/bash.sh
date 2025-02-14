@@ -1,7 +1,7 @@
 # ---- Setup ----
 isi="
 # ~/.bashrc
-. $HOME/.config/.bashrc
+. $HOME/.config/bashrc
 "
 check=$(cat $HOME/.bashrc)
 if [[ "$check" != "$isi" ]]; then

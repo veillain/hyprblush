@@ -249,6 +249,7 @@ window#waybar > box {
 }
 #custom-title {
     font-size: 10;
+    font-weight: bold;
 }
 #custom-artist {
     font-size: 10;
