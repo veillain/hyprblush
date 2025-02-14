@@ -246,6 +246,7 @@ window#waybar > box {
 }
 #mediatext {
     margin-left: 10;
+    padding: 1 0 0 0;
 }
 #custom-title {
     font-size: 10;

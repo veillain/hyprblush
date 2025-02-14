@@ -36,7 +36,7 @@ help (){
 operations:
     dotman {-h help}                        Show this help
     dotman {-l list}                        Show List of Configuration included in dotfiles
-    dotman {--set set} [path/to/dotfiles]   Set your dotfiles path
+    dotman {--set set} [path/to/dotfiles]   Set your dotfiles path/directory
     dotman {-p path}                        Check your dotfiles path
     dotman {-S sync} [package(s)]           Copy your config into dotfiles
     dotman {-Su syncall} [package(s)]       Update all your config inside dotfiles
@@ -187,8 +187,8 @@ if [ ! "$check" ]; then
 fi
 
 case $1 in
-    -p|--path|path) path ;;
-    --set|--set-path|set|set-path) set ;;
+    -p|--path|path|-d|--dir|dir) path ;;
+    --set|--set-path|--set-dir|set|set-path|set-dir) set ;;
     -[sS]|--sync|sync) sync ;;
     -[sS][uU]|-[sS][aA]|--syncall|syncall) syncall ;;
     -[rR]|--remove|remove) remove ;;
