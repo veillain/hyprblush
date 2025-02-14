@@ -18,39 +18,30 @@ image(){
 metadata(){
     while true; do
         status=$(playerctl status)
-        artist=$(playerctl metadata | grep artist | grep -oP 'artist\s+\K.*')
         title=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
+        artist=$(playerctl metadata | grep artist | grep -oP 'artist\s+\K.*')
+
         if [[ "$status" == Playing ]]; then
-            case $1 in
-                title)
-                    echo "{\"text\": \"${title}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
-                    ;;
-                artist)
-                    echo "{\"text\": \"${artist}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
-                    ;;
-            esac
+            class="normal"
+            sleep 0.5
         elif [[ "$status" == Paused ]]; then
-            case $1 in
-                title)
-                    echo "{\"text\": \"${title}\", \"class\": \"paused\"}" | jq --unbuffered --compact-output .
-                    ;;
-                artist)
-                    echo "{\"text\": \"${artist}\", \"class\": \"paused\"}" | jq --unbuffered --compact-output .
-                    ;;
-            esac
+            class="paused"
+            sleep 0.5
         else
+            class="normal"
             title=$(echo $HOSTNAME)
             artist=$(whoami)
-            case $1 in
-                title)
-                    echo "{\"text\": \"${title}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
-                    ;;
-                artist)
-                    echo "{\"text\": \"${artist}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
-                    ;;
-            esac
             sleep 5
         fi
+
+        case $1 in
+            title)
+                echo "{\"text\": \"${title}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+                ;;
+            artist)
+                echo "{\"text\": \"${artist}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+                ;;
+        esac
     done
 }
 
