@@ -4,11 +4,15 @@ if [ -n "$choice" ]; then
     lastcommit=$(git show --summary | awk 'NR==5' | sed 's/    //')
     git add $choice || exit
     echo ""
-    echo "Last Commit: $lastcommit"
-    read -p "+Commit msg: " commitmsg
+    echo "[Last Commit]"
+    echo $lastcommit
+    echo ""
+    echo "[Commit Message]"
+    read -p "\> " commitmsg
     git commit -m "$commitmsg"
     echo ""
-    read -p "Branch to push: " branches
+    echo "[Branch to Push]"
+    read -p "\> " branches
     git push -u origin $branches
 else
     echo "Please include files you want to add, or type '.' for all"
