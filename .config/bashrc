@@ -1,6 +1,9 @@
 # ~/.bashrc
 
 
+# ---- Source ----
+source $HOME/.config/bash/navita.sh
+
 # ---- Environments ----
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
@@ -22,7 +25,6 @@ export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 # Evals
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
-eval "$(zoxide init bash)"
 
 
 # ---- Settings ----
@@ -34,13 +36,12 @@ HISTDUP=erase
 
 
 # ---- Alias ----
-alias cd='z'
 alias cat='bat'
 alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions -la'
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias neovim='nvim'
-alias bf='clear; bunnyfetch'
+alias bf='bunnyfetch'
 alias boottime='systemd-analyze'
 alias grep='grep --color=auto'
 alias .bashrc='nvim $HOME/.config/bashrc'

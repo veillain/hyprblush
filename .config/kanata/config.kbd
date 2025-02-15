@@ -4,17 +4,31 @@
  )
 
 (defvar
-    tekan 150
-    tahan 150
+    tekan 0
+    tahan 200
 )
 
 (defalias
     ;; ---- Others Things ----
-    capslock (tap-hold $tekan $tahan esc lctl)
+    ;; capslock (tap-hold $tekan $tahan esc lctl)
+    capslock (tap-hold $tekan $tahan esc (layer-while-held extend))
     escapers (tap-hold $tekan $tahan esc grv)
 )
 
 (deflayer base
     @capslock
     @escapers
+)
+
+(deflayermap (extend)
+    d C-d
+    u C-u
+    h C-left
+    l C-right
+    c C-S-c
+    v C-S-v
+    n C-bspc
+    m bspc
+    , Home
+    . End
 )
