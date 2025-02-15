@@ -95,7 +95,7 @@ window#waybar > box {
 }
 
 #workspaces button:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #workspaces button.persistent {
@@ -111,11 +111,11 @@ window#waybar > box {
 #workspaces button.visible {
     /* font-weight: bold; */
     color: @foreground;
-    background-color: @blue;
+    background-color: @module-hover;
     transition: all 0.3s ease-in-out;
 }
 #workspaces button.active:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #workspaces button.urgent {
@@ -146,7 +146,7 @@ window#waybar > box {
     transition: all 0.2s ease-in-out;
 }
 #custom-options:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #volume {
@@ -158,8 +158,8 @@ window#waybar > box {
 }
 #volume:hover {
     color: @background;
-    background-color: @blue;
-    border: 2px solid @blue;
+    background-color: @module-hover;
+    border: 2px solid @module-hover;
 }
 #custom-volume {
     background-color: inherit;
@@ -232,7 +232,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #clock:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #media {
@@ -244,7 +244,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #media:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 #mediatext {
     margin-left: 10;
@@ -258,10 +258,10 @@ window#waybar > box {
     font-size: 10;
 }
 #custom-title.paused {
-    color: @blue;
+    color: @module-hover;
 }
 #custom-artist.paused {
-    color: @blue;
+    color: @module-hover;
 }
 
 /* ---- Bottom ---- */
@@ -273,7 +273,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #custom-mediabar:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #trayer {
@@ -284,7 +284,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #trayer:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 #tray {
     margin: 0 10 0 0;
@@ -312,7 +312,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #custom-notification:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 
 #battery {
@@ -323,7 +323,7 @@ window#waybar > box {
     transition: all 0.3s ease-in-out;
 }
 #battery:hover {
-    background-color: @blue;
+    background-color: @module-hover;
 }
 #battery.full {
     color: @light-blue;
