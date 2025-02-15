@@ -15,8 +15,10 @@ vim.g.plugins = {
     "https://github.com/echasnovski/mini.statusline",
     "https://github.com/echasnovski/mini.tabline",
     "https://github.com/echasnovski/mini.trailspace",
+    "https://github.com/echasnovski/mini.surround",
     -- Telescope
     "https://github.com/nvim-telescope/telescope.nvim",
+    "https://github.com/wojciech-kulik/filenav.nvim",
     -- Completions
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/L3MON4D3/LuaSnip",
@@ -56,6 +58,7 @@ require("mini.move").setup()
 require("mini.splitjoin").setup()
 require("mini.tabline").setup()
 require("mini.trailspace").setup()
+require("mini.surround").setup()
 
 
 -- Plugins Setup
@@ -96,7 +99,15 @@ require("telescope").setup({
             hidden = true,
         }
     },
-    })
+})
+
+require("filenav").setup({
+    prev_file_key = "<S-h>",
+    next_file_key = "<S-l>",
+    max_history   = 100,
+    remove_duplicates = true,
+})
+
 require("oil").setup({
     default_file_explorer = true,
     delete_to_trash = true,
