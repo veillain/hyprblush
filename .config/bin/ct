@@ -30,13 +30,18 @@ function currento() {
         elif [ "$CHOICE" = .. ]; then
             cd ..
         else
-            CHECK=$(cat $CTHIST | grep $CHOICE | awk 'NR==1')
-            if [ "$CHECK" ]; then
-                cd $CHECK
+            cd $CHOICE &>/dev/null
+            if [ $? -eq 0 ]; then
+                savetohist
             else
-                cd $CHOICE
-                if [ $? -eq 0 ]; then
-                    savetohist
+                CHECK=$(cat $CTHIST | grep $CHOICE | awk 'NR==1')
+                if [ "$CHECK" ]; then
+                    cd $CHECK
+                else
+                    cd $CHOICE
+                    if [ $? -eq 0 ]; then
+                        savetohist
+                    fi
                 fi
             fi
         fi

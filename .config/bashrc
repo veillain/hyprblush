@@ -2,7 +2,6 @@
 
 
 # ---- Source ----
-source $HOME/.config/bash/navita.sh
 source $HOME/.config/bin/ct
 
 # ---- Environments ----
