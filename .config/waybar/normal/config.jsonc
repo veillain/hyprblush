@@ -14,46 +14,40 @@
   "modules-right": [
     // "custom/mediabar",
     "group/trayer",
+    "group/volume",
     "custom/notification",
     "battery",
   ],
 
-  "group/search": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 1000,
-      "transition-left-to-right": true,
+  // ---- Left / Top ----
+  "clock": {
+    "format": "{:%H.%M}",
+    // "format-alt": "{:%a, %d %b - %H.%M}",
+    "format-alt": "{:%A, %d %B - %H.%M}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %d %B %Y}",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      //"weeks-pos"     : "left",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
     },
-    "modules": [
-      "custom/search",
-      "custom/terminal",
-      "custom/browser",
-      "custom/clipboard",
-    ],
-  },
-
-  "custom/search": {
-    "format": "󰣆",
-    "tooltip": false,
-    "on-click": "pkill -x rofi || rofi -no-steal-focus -show drun",
-  },
-
-  "custom/terminal": {
-    "format": "",
-    "tooltip-format": "Terminal",
-    "on-click": "foot",
-  },
-
-  "custom/clipboard": {
-    "format": "󰅌",
-    "tooltip-format": "Clipboard",
-    "on-click": "$HOME/.config/bash/clipboard",
-  },
-
-  "custom/browser": {
-    "format": "󰊯",
-    "tooltip-format": "Browser",
-    "on-click": "google-chrome-stable",
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+    "on-click": "$HOME/.config/waybar/calendar/exec.sh",
   },
 
   "hyprland/workspaces": {
@@ -95,37 +89,7 @@
     }
   },
 
-  "dwl/tags": {
-    "num-tags": 9
-  },
-
-  "group/options": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 1000,
-      "transition-left-to-right": true,
-    },
-    "modules": [
-      "custom/options",
-      "group/volume",
-      "group/brightness",
-      "group/packages",
-    ],
-  },
-
-  "custom/options": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "$HOME/.config/waybar/home/toggle.sh",
-  },
-
-  "group/volume": {
-    "orientation": "inherit",
-    "modules": ["custom/volume", "pulseaudio"],
-    "on-scroll-up": "$HOME/.config/bash/volume --up",
-    "on-scroll-down": "$HOME/.config/bash/volume --down",
-  },
-
+  
   "group/brightness": {
     "orientation": "inherit",
     "modules": ["custom/brightness", "backlight"],
@@ -143,10 +107,6 @@
     "tooltip": false,
   },
 
-  "custom/volume": {
-    "format": "",
-    "tooltip": false,
-  },
 
   "custom/packages": {
     "format": "{icon}",
@@ -170,27 +130,6 @@
     "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300",
   },
 
-  "pulseaudio": {
-    "scroll-step": 5, // %, can be a float
-    "format": "{volume}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-    "on-click": "pavucontrol",
-    "on-scroll-up": "$HOME/.config/bash/volume --up",
-    "on-scroll-down": "$HOME/.config/bash/volume --down",
-  },
 
   "backlight": {
     "scroll-step": 5,
@@ -208,35 +147,6 @@
   },
 
   // ---- Center ----
-  "clock": {
-    "format": "{:%H.%M}",
-    // "format-alt": "{:%a, %d %b - %H.%M}",
-    "format-alt": "{:%A, %d %B - %H.%M}",
-    "tooltip": true,
-    "tooltip-format": "{:%A, %d %B %Y}",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      //"weeks-pos"     : "left",
-      "on-scroll": 1,
-      "on-click-right": "mode",
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
-    },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
-    "on-click": "$HOME/.config/waybar/calendar/exec.sh",
-  },
 
     "group/media": {
         "orientation": "inherit",
@@ -319,6 +229,43 @@
     "spacing": 3,
   },
 
+  "group/volume": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+    },
+    "modules": ["custom/volume", "pulseaudio"],
+    "on-scroll-up": "$HOME/.config/bash/volume --up",
+    "on-scroll-down": "$HOME/.config/bash/volume --down",
+  },
+  "custom/volume": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "pavucontrol"
+  },
+  "pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "{volume}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": "",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+    "on-scroll-up": "$HOME/.config/bash/volume --up",
+    "on-scroll-down": "$HOME/.config/bash/volume --down",
+  },
+
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -342,7 +289,7 @@
 
   "battery": {
     "states": {
-      // "good": 95,
+      "good": 95,
       "warning": 30,
       "critical": 15,
     },
@@ -350,7 +297,7 @@
     "format-full": "{icon}",
     "format-charging": "",
     "format-plugged": "  {capacity}%",
-    // "format-alt": "{icon}  {time}",
+    "format-alt": "{icon}  {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],

@@ -150,25 +150,27 @@ window#waybar > box {
 }
 
 #volume {
-    background-color: @foreground;
-    border: 2px solid @foreground;
+    background-color: @module-bg;
+    border: 2px solid @module-bg;
     transition: all 0.2s ease-in-out;
     border-radius: 3;
-    margin: 3 3 3 3;
+    margin: 2;
 }
 #volume:hover {
-    background-color: @light-green;
-    border: 2px solid @light-green;
+    color: @background;
+    background-color: @blue;
+    border: 2px solid @blue;
 }
 #custom-volume {
     background-color: inherit;
-    color: @background;
-    padding: 5;
+    color: @foreground;
+    padding: 7;
 }
 #pulseaudio {
+    color: @foreground;
     border-radius: 0 0 3 3;
     background-color: @module-bg;
-    padding: 5;
+    padding: 0 5;
 }
 
 #brightness {
@@ -246,7 +248,7 @@ window#waybar > box {
 }
 #mediatext {
     margin-left: 10;
-    padding: 1 0 0 0;
+    padding: 3 0 0 0;
 }
 #custom-title {
     font-size: 10;
@@ -324,7 +326,10 @@ window#waybar > box {
     background-color: @blue;
 }
 #battery.full {
-    color: @foreground;
+    color: @light-blue;
+}
+#battery.good {
+    color: @light-blue;
 }
 #battery.charging, #battery.plugged {
     color: @light-green;
@@ -335,8 +340,12 @@ window#waybar > box {
         color: @foreground;
     }
 }
+#battery.good:not(.charging) {
+    color: inherit;
+}
 #battery.warning:not(.charging) {
-    color: @light-yellow;
+    background-color: @light-yellow;
+    color: @background;
 }
 #battery.critical:not(.charging) {
     background-color: @light-red;

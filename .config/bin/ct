@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ---- Current To ----
+# Simple bash scripts to enhance cd, inspired by zoxide and navita.
+
+# -- Variable --
+CONFIGDIR="$HOME/.config/currento"
+CONFIGFILE="$CONFIGDIR/config.sh"
+DEFAULTCONF="historypath = $CONFIGDIR/history
+historysize = 100"
+
+# -- Check for ct configuration file and dir --
+if [ ! -d "$CONFIGDIR" ]; then
+    mkdir -p $CONFIGDIR &>/dev/null
+    echo "$DEFAULTCONF" > $CONFIGFILE &>/dev/null
+fi
+
+# -- Link Start --
+options=$1
+choice=$(echo $@ | grep -oP "(?<=$options ).*")

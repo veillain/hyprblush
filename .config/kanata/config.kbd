@@ -1,34 +1,48 @@
 (defsrc
-    caps
     esc
+    caps
  )
 
 (defvar
-    tekan 0
+    tekan 200
     tahan 200
 )
 
 (defalias
-    capslock (tap-hold $tekan $tahan esc (layer-while-held extend))
     escapers (tap-hold $tekan $tahan esc grv)
+    capslock (tap-hold $tekan $tahan esc (layer-while-held extend))
 )
 
 (deflayer base
-    @capslock
     @escapers
+    @capslock
 )
 
 (deflayermap (extend)
+    ;; up and down in nvim
     d C-d
     u C-u
+
+    ;; arrow keys using hjkl
     h C-left
     j down
     k up
     l C-right
+
+    ;; needed on terminal 
+    x C-c
+    w C-w
     c C-S-c
     v C-S-v
+
+    ;; backspace and ctl+bs
     n C-bspc
     m bspc
+
+    ;;
+    ; return
+
+    ;; home and end
     , Home
     . End
 )
