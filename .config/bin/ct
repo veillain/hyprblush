@@ -2,13 +2,13 @@
 
 # ---- Current To ----
 # Simple bash scripts to enhance cd, inspired by zoxide and navita.
-CTCONF="historypath = $CTHIST"
+CTCONF="historypath = $HOME/.config/currento/history"
 
 
 # -- Check for ct configuration file and dir --
 CTDIR="$HOME/.config/currento"
 CTFILE="$CTDIR/config.sh"
-CTHIST="$CTDIR/history"
+CTHIST=$(cat $CTFILE | grep historypath | awk '{print $3}')
 if [ ! -d "$CTDIR" ]; then
     mkdir -p $CTDIR &>/dev/null
     echo "$CTCONF" > $CTFILE &>/dev/null
@@ -57,4 +57,5 @@ function currento() {
     checklists
 }
 
+alias ct=currento
 alias cd=currento
