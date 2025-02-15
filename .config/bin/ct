@@ -2,19 +2,54 @@
 
 # ---- Current To ----
 # Simple bash scripts to enhance cd, inspired by zoxide and navita.
+CTCONF="historypath = $CTHIST"
 
-# -- Variable --
-CONFIGDIR="$HOME/.config/currento"
-CONFIGFILE="$CONFIGDIR/config.sh"
-DEFAULTCONF="historypath = $CONFIGDIR/history
-historysize = 100"
 
 # -- Check for ct configuration file and dir --
-if [ ! -d "$CONFIGDIR" ]; then
-    mkdir -p $CONFIGDIR &>/dev/null
-    echo "$DEFAULTCONF" > $CONFIGFILE &>/dev/null
+CTDIR="$HOME/.config/currento"
+CTFILE="$CTDIR/config.sh"
+CTHIST="$CTDIR/history"
+if [ ! -d "$CTDIR" ]; then
+    mkdir -p $CTDIR &>/dev/null
+    echo "$CTCONF" > $CTFILE &>/dev/null
+    echo "" > $CTHIST &>/dev/null
 fi
 
+
 # -- Link Start --
-options=$1
-choice=$(echo $@ | grep -oP "(?<=$options ).*")
+function currento() {
+    # Basic
+    CHOICE=$1
+    CURDIR=$(pwd)
+    PRVDIR=$(dirname $CURDIR)
+
+    # Check history list
+    checklists(){
+        if [ -z "$CHOICE" ]; then
+            cd $HOME
+        elif [ "$CHOICE" = .. ]; then
+            cd ..
+        else
+            CHECK=$(cat $CTHIST | grep $CHOICE | awk 'NR==1')
+            if [ "$CHECK" ]; then
+                cd $CHECK
+            else
+                cd $CHOICE
+                if [ $? -eq 0 ]; then
+                    savetohist
+                fi
+            fi
+        fi
+    }
+
+    savetohist(){
+        CHECKHISTORYLIST=$(cat $CTHIST | grep $CURDIR/$CHOICE)
+        if [ ! "$CHECKHISTORYLIST" ]; then
+            echo $CURDIR/$CHOICE >> $CTDIR/history
+        fi
+    }
+
+    checklists
+}
+
+alias cd=currento

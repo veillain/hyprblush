@@ -3,6 +3,7 @@
 
 # ---- Source ----
 source $HOME/.config/bash/navita.sh
+source $HOME/.config/bin/ct
 
 # ---- Environments ----
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
