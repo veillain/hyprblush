@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=EverBlush-Dark
+Comment=Everblush GTK theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=EverBlush-Dark
+MetacityTheme=EverBlush -Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=EverBlush-cursors
+ButtonLayout=close,minimize,maximize:menu
