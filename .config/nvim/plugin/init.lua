@@ -4,6 +4,9 @@ vim.g.plugins = {
 	"https://github.com/BryceVandegrift/pm",
 	-- Colorschemes
     "https://github.com/Everblush/nvim",
+    -- Smooth like butter
+    "https://github.com/karb94/neoscroll.nvim",
+    "https://github.com/sphamba/smear-cursor.nvim",
     -- Mini Family
     "https://github.com/echasnovski/mini.bracketed",
     "https://github.com/echasnovski/mini.indentscope",
@@ -65,6 +68,8 @@ require("mini.surround").setup()
 
 
 -- Plugins Setup
+require("neoscroll").setup({ mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'} })
+require("smear_cursor").enabled = true
 require("btw").setup({ text = "I use neovim inside Arch (BTW)" })
 require("flash").setup({})
 require("nvim-autopairs").setup({})
