@@ -4,6 +4,7 @@ vim.g.plugins = {
 	"https://github.com/BryceVandegrift/pm",
 	-- Colorschemes
     "https://github.com/Everblush/nvim",
+    "https://github.com/folke/tokyonight.nvim",
     -- Smooth like butter
     "https://github.com/karb94/neoscroll.nvim",
     "https://github.com/sphamba/smear-cursor.nvim",
@@ -172,11 +173,12 @@ require("nvim-treesitter.configs").setup({
 vim.cmd([[
 	augroup TransparentBackground
 	autocmd!
-	autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
 	autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
+	autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
 	augroup END
 ]])
 vim.cmd("colorscheme everblush")
+-- vim.cmd("colorscheme tokyonight")
 
 
 -- Note Taking Setup
