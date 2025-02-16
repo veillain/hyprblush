@@ -19,8 +19,11 @@ vim.g.plugins = {
     -- Telescope
     "https://github.com/nvim-telescope/telescope.nvim",
     "https://github.com/wojciech-kulik/filenav.nvim",
-    -- Completions
+    -- Lsp's
     "https://github.com/neovim/nvim-lspconfig",
+    "https://github.com/williamboman/mason.nvim",
+    "https://github.com/williamboman/mason-lspconfig.nvim",
+    -- Completions
     "https://github.com/L3MON4D3/LuaSnip",
     "https://github.com/saadparwaiz1/cmp_luasnip",
     "https://github.com/hrsh7th/cmp-buffer",
@@ -180,16 +183,3 @@ require("obsidian").setup({
         },
     },
 })
-
--- Completion Setup
-require("lspconfig").lua_ls.setup({
-    settings = {
-        Lua = {
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-            },
-        },
-    },
-})
-require("lspconfig").vimls.setup({})

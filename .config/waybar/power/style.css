@@ -58,6 +58,7 @@ window#waybar > box {
     border-radius: 3;
     margin: 5 0 0 0;
     padding: 11 12;
+    transition: all 0.3s ease-in-out;
 }
 #screencapt { margin: 5 0 0 5; }
 #custom-ssicon, #custom-scicon {
@@ -66,6 +67,11 @@ window#waybar > box {
 }
 #custom-sstext, #custom-sstexts, #custom-sctext, #custom-sctexts {
     font-size: 11;
+}
+
+#screenshot:hover {
+    background-color: @module-hover;
+    transition: all 0.3s ease-in-out;
 }
 
 
