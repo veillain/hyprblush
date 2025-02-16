@@ -92,7 +92,7 @@
         ]
     },
     "custom/ssicon": {
-        "format": "",
+        "format": "S",
         "tooltip": false
     },
     "custom/sstext": {
@@ -113,7 +113,7 @@
         ]
     },
     "custom/scicon": {
-        "format": "",
+        "format": "",
         "tooltip": false
     },
     "custom/sctext": {
@@ -121,7 +121,7 @@
         "tooltip": false
     },
     "custom/sctexts": {
-        "format": "Record",
+        "format": "Capture",
         "tooltip": false
     },
 

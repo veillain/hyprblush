@@ -225,7 +225,7 @@
     "tooltip": false,
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 16,
     "spacing": 3,
   },
 
@@ -297,7 +297,8 @@
     "format-full": "{icon}",
     "format-charging": "",
     "format-plugged": "  {capacity}%",
-    "format-alt": "{icon}  {time}",
+    "formal-alt": "X",
+    // "format-alt": "{icon}  {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],

@@ -18,43 +18,56 @@ window#waybar > box {
     margin: 5;
 }
 
-.modules-left {
+.modules-right {
     background-color: @background;
     border-radius: 3;
-    padding: 10px;
+    padding: 5px;
 }
 
-#batterybox {
+#mid {}
+#midtop {
     background-color: @module-bg;
     border-radius: 3;
-    padding: 5 15;
+    padding: 6 15;
 }
-#custom-batlogo {
-    font-size: 48;
-    /* background-color: @module-hover; */
-    padding: 0 10;
-}
-#battext {
-    padding: 10 0 10 20px;
-    font-weight: bold;
+/* #batterybox { */
+/*     background-color: @module-bg; */
+/*     border-radius: 3; */
+/*     padding: 5 15; */
+/* } */
+#custom-batkosong {
+    padding: 0 40;
+    margin: -5 0;
+    color: transparent;
 }
 #battery {
-    font-size: 22;
+    font-size: 32;
+    margin: 0 0 0 12;
+    /* background-color: @module-hover; */
+    /* padding: 0 10; */
 }
-
-/* temperature box */
-#temperaturebox {
-    background: @module-bg;
-    margin: 5 0 0 0;
-    padding: 8 0 0 0;
-}
-#custom-tempkosong {
-    color: @module-bg;
-    padding: 0 30;
-}
-#custom-temptext {
+#custom-batpercentage {
+    padding: 5 0 0 0;
+    margin: 0 0 0 15;
+    font-size: 26;
     font-weight: bold;
 }
+
+#screenshot, #screencapt {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 5 0 0 0;
+    padding: 11 12;
+}
+#screencapt { margin: 5 0 0 5; }
+#custom-ssicon, #custom-scicon {
+    font-size: 24;
+    margin-bottom: 10;
+}
+#custom-sstext, #custom-sstexts, #custom-sctext, #custom-sctexts {
+    font-size: 11;
+}
+
 
 /* memory box */
 #custom-memkosong {
@@ -82,44 +95,15 @@ window#waybar > box {
 }
 
 /* button */
-#custom-ptext {
-    padding: 8 0 5 0;
-    color: alpha(@foreground, 0.5);
-}
-
-#custom-lock {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 0;
-    padding: 10 12 10 12;
-    transition: all 0.3s ease-in-out;
-}
-#custom-suspend {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 5;
-    padding: 10 11 10 13;
-    transition: all 0.3s ease-in-out;
-}
-#custom-reboot {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 5;
-    padding: 10 12 10 12;
-    transition: all 0.3s ease-in-out;
-}
-#custom-logout {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 5;
-    padding: 10 12 10 12;
-    transition: all 0.3s ease-in-out;
-}
+#custom-lock,
+#custom-suspend,
+#custom-reboot,
+#custom-logout,
 #custom-poweroff {
     background-color: @module-bg;
     border-radius: 3;
-    margin: 5 0 0 5;
-    padding: 10 22 10 20;
+    margin: 0 0 5 5;
+    padding: 10 15;
     transition: all 0.3s ease-in-out;
 }
 

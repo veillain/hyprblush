@@ -248,11 +248,10 @@ window#waybar > box {
 }
 #mediatext {
     margin-left: 10;
-    padding: 3 0 0 0;
+    /* padding: 3 0 0 0; */
 }
 #custom-title {
     font-size: 10;
-    font-weight: bold;
 }
 #custom-artist {
     font-size: 10;
