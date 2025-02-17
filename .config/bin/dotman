@@ -68,10 +68,40 @@ set (){
 }
 
 sync (){
+    echo "resolving packages..."
+    echo "looking for conflicting packages in the dotfiles..."
+    numberpkg=1
     for pkg in ${choice[@]}; do
         check=$(ls $config_path/$pkg)
-        if [ ! -d "$dotfile_path/.config" ]; then
-            mkdir -p ${dotfile_path}/.config/${pkg}
+        size=$(du -sh $config_path/$pkg | awk '{print $1}')
+        dotsize=$(du -sh $dotfile_path/.config/$pkg | awk '{print $1}')
+        if [ ! -d "$dotfile_path/.config/$pkg" ]; then
+            echo ""
+            echo "Packages ($numberpkg) $pkg"
+            echo ""
+            echo "Package Folder Size: $size"
+            echo "Net Upgrade Size: $size"
+            echo ""
+            read -p ":: Proceed to sync packages? [Y/n]" ansor
+            case $ansor in
+                [yY])
+                    mkdir -p ${dotfile_path}/.config/${pkg}
+                    ;;
+                [nN])
+                    echo "cancelled"
+                    ;;
+                *)
+                    mkdir -p $dotfile_path/.config/$pkg 
+                    ;;
+            esac
+        elif [ -d "$dotfile_path/.config/$pkg" ]; then
+            echo "warning: $pkg is already inside dotfiles -- syncing"
+            echo ""
+            echo "Packages ($numberpkg) $pkg"
+            echo ""
+            echo "Package Folder Size: $dotsize"
+            echo "Updated Folder Size: $size"
+            echo ""
         fi
         if [ "$check" ]; then
             cp -rf $config_path/$pkg $dotfile_path/.config
@@ -83,6 +113,7 @@ sync (){
         else
             echo "$pkg is nowhere inside $config_path"
         fi
+        numberpkg=$(($numberpkg + 1))
     done
     if true; then
         echo ""
@@ -92,6 +123,8 @@ sync (){
 syncall (){
     path=$(ls ${dotfile_path}/.config)
     whatisit="syncall"
+    echo "resolving packages..."
+    echo "listing all packages folder in the dotfiles..."
     confirmation
     if [ "$confirm" = yes ]; then
         for pkg in $path; do
@@ -108,7 +141,7 @@ syncall (){
             fi
         done
     else
-        echo "Process cancelled."
+        echo "Interrupt signal received"
     fi
 }
 
@@ -130,7 +163,7 @@ remove (){
             fi
         done
     else
-        echo "Process cancelled."
+        echo "Interrupt signal received"
     fi
 }
 
