@@ -10,10 +10,10 @@ confirm=""
 whatisit=""
 confirmation (){
     case $whatisit in
-        remove) echo -n "Are you sure to remove ($choice) from dotfiles? (Y/n) " ;;
-        syncall) echo -n "Syncing all will overwrite the folder/file(s) in the dotfiles. Are you sure? (Y/n) " ;;
-        overwrite) echo -n "Are you sure to overwrite ($choice)? (Y/n) " ;;
-        *) echo -n "Are you sure (Y/n) " ;;
+        remove) echo -n ":: Are you sure to remove ($choice) from dotfiles? [Y/n] " ;;
+        syncall) echo -n ":: Syncing all will overwrite the folder/file(s) in the dotfiles. Are you sure? [Y/n] " ;;
+        overwrite) echo -n ":: Are you sure to overwrite ($choice)? [Y/n] " ;;
+        *) echo -n "Are you sure [Y/n] " ;;
     esac
     read answer
     case $answer in
