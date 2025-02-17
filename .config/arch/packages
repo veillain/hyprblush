@@ -1,0 +1,91 @@
+#!/bin/bash
+
+pkgs=(
+        base-devel
+        bat
+        bc
+        brave-bin
+        brightnessctl
+        cliphist
+        equibop-bin
+        eza
+        fd
+        file-roller
+        foot
+        fzf
+        git
+        github-cli
+        greetd
+        grim
+        gthumb
+        gvfs
+        hypridle
+        hyprland
+        hyprlock
+        hyprpicker
+        hyprpolkitagent
+        imagemagick
+        jq
+        kanata-bin
+        less
+        libnotify
+        man-db
+        neovim
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        noto-fonts-extra
+        npm
+        nwg-look
+        obsidian
+        otf-monaspace-nerd
+        papirus-icon-theme
+        pavucontrol
+        pcmanfm-gtk3
+        qt6ct
+        ripgrep
+        rofi-wayland
+        slurp
+        starship
+        swaync
+        swww
+        ttf-font-awesome
+        ttf-indic-otf
+        unzip
+        vlc
+        waybar
+        waybar-module-pacman-updates-git
+        xdg-desktop-portal-hyprland
+        yazi
+        yt-dlp
+     )
+
+# check for Aur Helper
+checkaurhelper=$(sudo pacman -Qe | grep paru)
+if [[ ! "$checkaurhelper" ]]; then
+    sudo pacman -S --noconfirm base-devel
+    git clone https://aur.archlinux.org/paru-bin
+    cd paru-bin
+    makepkg -si
+    if [ $? -eq 0 ]; then
+        cd ..
+        rm -rf paru-bin
+        echo "Paru as Aur Helper has installed"
+    else
+        echo "Failed to makepkg Paru for Aur Helper"
+    fi
+fi
+
+if [[ "$checkaurhelper" ]]; then
+    for pkg in ${pkgs[@]}; do
+        sudo pacman -Q $pkg
+        if [ $? -eq 1 ]; then
+            paru -S --noconfirm $pkg
+            if [ $? -eq 0 ]; then
+                "installed $pkg"
+            else
+                "failed to install $pkg"
+            fi
+        fi
+    done
+fi
